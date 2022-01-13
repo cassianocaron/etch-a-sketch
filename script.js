@@ -2,6 +2,8 @@ const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = "#333333";
 const DEFAULT_MODE = "black";
 
+let currentMode = DEFAULT_MODE;
+
 const blackBtn = document.getElementById("black-btn");
 const rainbowBtn = document.getElementById("rainbow-btn");
 const eraserBtn = document.getElementById("eraser-btn");
@@ -52,5 +54,21 @@ function createGrid(size) {
         const gridElement = document.createElement("div");
         gridElement.addEventListener("mouseover", changeColor);
         grid.appendChild(gridElement);
+    }
+}
+
+function changeColor() {
+    switch (currentMode) {
+        case "black":
+            this.style.backgroundColor = "#000000";
+            break;
+        case "rainbow":
+            this.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+            break;
+        case "eraser":
+            this.style.backgroundColor = "#ffffff";
+            break;
+        default:
+            this.style.backgroundColor = currentColor;
     }
 }
