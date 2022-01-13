@@ -46,6 +46,37 @@ buttons.forEach((button) => {
     });
 });
 
+gridSize.onmousemove = (e) => updateSizeValue(e.target.value);
+gridSlider.onchange = (e) => changeSize(e.target.value);
+
+function setCurrentColor(newColor) {
+    currentColor = newColor;
+}
+
+function setCurrentMode(newMode) {
+    currentMode = newMode;
+}
+
+function setCurrentSize(newSize) {
+    currentSize = newSize;
+}
+
+function updateSizeValue(value) {
+    gridSize.innerHTML = `Grid Size: ${value} x ${value}`;
+}
+
+function changeSize(value) {
+    setCurrentSize(value);
+    updateSizeValue(value);
+    reloadGrid();
+}
+
+function reloadGrid() {
+    grid.innerHTML = "";
+    createGrid(currentSize);
+}
+
+
 function createGrid(size) {
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
     grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
