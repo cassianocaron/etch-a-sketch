@@ -11,8 +11,8 @@ const rainbowBtn = document.getElementById("rainbow-btn");
 const eraserBtn = document.getElementById("eraser-btn");
 const pickerBtn = document.getElementById("picker-btn");
 const colorPicker = document.getElementById("color-picker");
-const gridSizeValue = document.getElementById("grid-size-value");
-const gridSlider = document.getElementById("grid-slider");
+const gridSizeValue = document.getElementById("size-value");
+const gridSizeSlider = document.getElementById("size-slider");
 const grid = document.getElementById("grid");
 const toggleGridLines = document.getElementById("toggle-grid-btn")
 
@@ -48,8 +48,8 @@ buttons.forEach((button) => {
     });
 });
 
-gridSizeValue.onmousemove = (e) => updateGridValue(e.target.value);
-gridSlider.onchange = (e) => changeSize(e.target.value);
+gridSizeSlider.onmousemove = (e) => updateSizeValue(e.target.value);
+gridSizeSlider.onchange = (e) => changeSize(e.target.value);
 
 function setCurrentColor(newColor) {
     currentColor = newColor;
@@ -63,8 +63,8 @@ function setCurrentSize(newSize) {
     currentSize = newSize;
 }
 
-function updateGridValue(value) {
-    sizeValue.innerHTML = `Grid Size: ${value} x ${value}`;
+function updateSizeValue(value) {
+    gridSizeValue.innerHTML = `Grid Size: ${value} x ${value}`;
 }
 
 function changeSize(value) {
