@@ -2,14 +2,16 @@ const DEFAULT_SIZE = 16;
 const DEFAULT_COLOR = "#333333";
 const DEFAULT_MODE = "black";
 
+let currentColor = DEFAULT_COLOR;
 let currentMode = DEFAULT_MODE;
+let currentSize = DEFAULT_SIZE;
 
 const blackBtn = document.getElementById("black-btn");
 const rainbowBtn = document.getElementById("rainbow-btn");
 const eraserBtn = document.getElementById("eraser-btn");
 const pickerBtn = document.getElementById("picker-btn");
 const colorPicker = document.getElementById("color-picker");
-const gridSize = document.getElementById("grid-size");
+const gridSizeValue = document.getElementById("grid-size-value");
 const gridSlider = document.getElementById("grid-slider");
 const grid = document.getElementById("grid");
 const toggleGridLines = document.getElementById("toggle-grid-btn")
@@ -46,7 +48,7 @@ buttons.forEach((button) => {
     });
 });
 
-gridSize.onmousemove = (e) => updateSizeValue(e.target.value);
+gridSizeValue.onmousemove = (e) => updateGridValue(e.target.value);
 gridSlider.onchange = (e) => changeSize(e.target.value);
 
 function setCurrentColor(newColor) {
@@ -61,8 +63,8 @@ function setCurrentSize(newSize) {
     currentSize = newSize;
 }
 
-function updateSizeValue(value) {
-    gridSize.innerHTML = `Grid Size: ${value} x ${value}`;
+function updateGridValue(value) {
+    sizeValue.innerHTML = `Grid Size: ${value} x ${value}`;
 }
 
 function changeSize(value) {
@@ -75,7 +77,6 @@ function reloadGrid() {
     grid.innerHTML = "";
     createGrid(currentSize);
 }
-
 
 function createGrid(size) {
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -102,4 +103,33 @@ function changeColor() {
         default:
             this.style.backgroundColor = currentColor;
     }
+}
+
+function activateButton(value) {
+    if (value === "black") {        
+        blackBtn.classList.add("active");
+        rainbowBtn.classList.remove("active");
+        eraserBtn.classList.remove("active");
+        pickerBtn.classList.remove("active");
+    } else if (value === "rainbow") {
+        blackBtn.classList.remove("active");
+        rainbowBtn.classList.add("active");
+        eraserBtn.classList.remove("active");
+        pickerBtn.classList.remove("active");
+    } else if (value === "eraser") {
+        blackBtn.classList.remove("active");
+        rainbowBtn.classList.remove("active");
+        eraserBtn.classList.add("active");
+        pickerBtn.classList.remove("active");
+    } else if (value === "color") {
+        blackBtn.classList.remove("active");
+        rainbowBtn.classList.remove("active");
+        eraserBtn.classList.remove("active");
+        pickerBtn.classList.add("active");
+    }
+}
+
+window.onload = () => {
+    createGrid(DEFAULT_SIZE);
+    activateButton(DEFAULT_MODE);
 }
