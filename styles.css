@@ -1,0 +1,26 @@
+html, body {
+  height: 100vh;
+  background-color: #cecece;
+}
+
+.container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  text-align: center;
+  color: #333333;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 50px 0;
+}
+
+.title {
+  font-size: 60px;
+}
+
