@@ -63,7 +63,6 @@ body {
 }
 
 .button.active {
-  font-size: 18px;
   font-weight: 500;
   background-color: #333333;
   color: white;
@@ -194,4 +193,33 @@ input[type='range']::-webkit-slider-thumb {
 
 .fa-github:hover {
   transform: rotate(360deg) scale(1.2);
+}
+
+@media only screen and (max-width: 650px) {
+  .title {
+    font-size: 50px;
+  }
+
+  .button {
+    width: 80px;
+    height: 35px;
+    font-size: 13px;
+  }
+
+  .button-settings {
+    width: 400px;
+  }
+
+  .grid {
+    width: 400px;
+    height: 400px;
+  }
+
+  .grid-settings {
+    width: 400px;
+  }
+
+  #size-value {
+    font-size: 18px;
+  }
 }
