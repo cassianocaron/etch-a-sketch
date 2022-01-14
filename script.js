@@ -5,6 +5,7 @@ const DEFAULT_MODE = "black";
 let currentColor = DEFAULT_COLOR;
 let currentMode = DEFAULT_MODE;
 let currentSize = DEFAULT_SIZE;
+let drawMode = false;
 
 const blackBtn = document.getElementById("black-btn");
 const rainbowBtn = document.getElementById("rainbow-btn");
@@ -80,12 +81,28 @@ function reloadGrid() {
 
 function createGrid(size) {
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;    
 
     for (let i = 0; i < size * size; i++) {
         const gridElement = document.createElement("div");
-        gridElement.addEventListener("mouseover", changeColor);
+        gridElement.classList.add("cell");
+        gridElement.addEventListener("click", toggleDrawMode);
         grid.appendChild(gridElement);
+    }
+}
+
+function toggleDrawMode() {
+    const cells = document.querySelectorAll(".cell");
+    if (drawMode === false) {
+        cells.forEach(cell => {
+            cell.addEventListener("mouseover", changeColor);
+        });
+        drawMode = true;
+    } else {
+        cells.forEach(cell => {
+            cell.removeEventListener("mouseover", changeColor);
+        });
+        drawMode = false;
     }
 }
 
