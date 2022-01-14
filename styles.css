@@ -129,10 +129,6 @@ input[type='color']::-webkit-color-swatch {
   height: 40px;
 }
 
-#clear-btn {
-  background-color: #DC143C;
-}
-
 .slider-wrapper {
   width: 50%;  
 }
@@ -164,8 +160,9 @@ input[type='range']::-webkit-slider-thumb {
   background: black;
 }
 
-#toggle-grid-btn {
+#toggle-grid-btn, #clear-btn {
   background-color: #DC143C;
+  color: black;
 }
 
 #toggle-grid-btn.active {
